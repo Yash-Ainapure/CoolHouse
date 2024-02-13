@@ -96,11 +96,11 @@
                             android:scrollbars="vertical" />
 
                     </RelativeLayout>
-                    <Button
-                        android:id="@+id/getbill"
-                        android:text="gdg"
+
+                    <View
+                        android:background="@color/black"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="5dp"/>
                     <TextView
                         android:id="@+id/selectedProductsCountTextView"
                         android:layout_width="wrap_content"
@@ -109,7 +109,11 @@
                         android:textSize="18sp"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="16dp"/>
-
+                    <Button
+                        android:id="@+id/getbill"
+                        android:text="generate bill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
             </ScrollView>

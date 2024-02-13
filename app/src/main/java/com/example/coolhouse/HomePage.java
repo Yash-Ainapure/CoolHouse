@@ -55,14 +55,7 @@ public class HomePage extends AppCompatActivity {
 
         setupSelectedProductsCountListener();
         getBill.setOnClickListener(v->{
-            Log.d("sleeee","displaying selected products");
-            for (String criteria : criteriaList) {
-                List<Product> selectedProducts = SelectedProductsSingleton.getInstance().getSelectedProducts(criteria);
-                Log.d("SelectedProducts", "Criteria: " + criteria);
-                for (Product product : selectedProducts) {
-                    Log.d("SelectedProducts", "  Selected Product: " + product.name);
-                }
-            }
+
         });
 
     }
