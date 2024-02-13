@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "969742081135",
+    "firebase_url": "https://gusaa-2a30f-default-rtdb.firebaseio.com",
+    "project_id": "gusaa-2a30f",
+    "storage_bucket": "gusaa-2a30f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969742081135:android:ce0091bd59107dd1e6019a",
+        "android_client_info": {
+          "package_name": "com.example.coolhouse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF9nH3suSxCJW02A73Cd6FnmxrRaodmTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
