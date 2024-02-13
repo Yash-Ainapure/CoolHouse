@@ -26,61 +26,87 @@ import java.util.List;
 
 public class Product_Details extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    DatabaseReference database;
-    IcecreamProductAdapter  IcecreamProductAdapter;
-    ArrayList<ProductList> list;
+    private ProductAdapter productAdapter;
+    private List<Product> productList;
+    String selectedCriteria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        // database for accessing images and its url
-        recyclerView=findViewById(R.id.recyclerView);
-        database= FirebaseDatabase.getInstance().getReference("icecream");
+        selectedCriteria = getIntent().getStringExtra("criteria");
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("products").child(selectedCriteria);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        productList = new ArrayList<>();
+        productAdapter = new ProductAdapter(this, productList,selectedCriteria);
 
-        list=new ArrayList<>();
-        IcecreamProductAdapter=new IcecreamProductAdapter(Product_Details.this,list);
-        recyclerView.setAdapter(IcecreamProductAdapter);
+        RecyclerView recyclerView = findViewById(R.id.productRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(productAdapter);
 
-        database.addValueEventListener(new ValueEventListener() {
+        SelectedProductsSingleton.getInstance().loadSelectedProducts(selectedCriteria,productList);
+        fetchProducts(productsRef);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload products when the activity is resumed
+        productAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Save selections when the activity is destroyed
+        String selectedCriteria = getIntent().getStringExtra("criteria");
+
+        SelectedProductsSingleton.getInstance().saveSelectedProducts(selectedCriteria,productList);
+    }
+
+    private void fetchProducts(DatabaseReference productsRef) {
+        productsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                list.clear();
-
-                for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
-                    for (DataSnapshot dataSnapshot : categorySnapshot.getChildren()) {
-                        //Images and its name are displayed
-
-
-                        ProductList ProductList = dataSnapshot.getValue(ProductList.class);
-                        list.add(ProductList);
-
-
-                    }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                productList.clear();
+                for (DataSnapshot productSnapshot : dataSnapshot.getChildren()) {
+                    Product product = productSnapshot.getValue(Product.class);
+                    productList.add(product);
                 }
-                if (IcecreamProductAdapter != null) {
-                    IcecreamProductAdapter.notifyDataSetChanged();
-                }
-                //  IcecreamProductAdapter.notifyDataSetChanged();
+                SelectedProductsSingleton.getInstance().loadSelectedProducts(selectedCriteria,productList);
+                productAdapter.notifyDataSetChanged();
+
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //handle error
-                Toast.makeText(Product_Details.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
             }
         });
 
-
-
-
     }
+
+//    private void generateBill() {
+//        List<Product> selectedProducts = SelectedProductsSingleton.getInstance().getSelectedProducts();
+//
+//        // Calculate the total amount based on selected products
+//        double totalAmount = 0.0;
+//        for (Product product : selectedProducts) {
+//            totalAmount += product.price;
+//        }
+//
+//    }
+
+
+//    private void clearSelection() {
+//        for (Product product : productList) {
+//            product.isSelected = false;
+//        }
+//        SelectedProductsSingleton.getInstance().clearSelectedProducts();
+//        productAdapter.notifyDataSetChanged();
+//    }
+
+
 }
 
 
