@@ -30,6 +30,8 @@ public class HomePage extends AppCompatActivity {
     private List<String> criteriaList;
     private DatabaseReference productsRef;
     Button getBill;
+    private TextView selectedProductsCountTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         getBill=findViewById(R.id.getbill);
+        selectedProductsCountTextView = findViewById(R.id.selectedProductsCountTextView);
         recyclerView = findViewById(R.id.recyclerView);
         criteriaList = new ArrayList<>();
         criteriaAdapter = new CriteriaAdapter(this, criteriaList);
@@ -50,6 +53,7 @@ public class HomePage extends AppCompatActivity {
 
         fetchProductCriteria();
 
+        setupSelectedProductsCountListener();
         getBill.setOnClickListener(v->{
             Log.d("sleeee","displaying selected products");
             for (String criteria : criteriaList) {
@@ -80,5 +84,38 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+
+    private void setupSelectedProductsCountListener() {
+        // Listen for changes in the selected products and update the count
+        SelectedProductsSingleton.getInstance().addSelectedProductsChangeListener(new SelectedProductsSingleton.SelectedProductsChangeListener() {
+            @Override
+            public void onSelectedProductsChanged() {
+                updateSelectedProductsCount();
+            }
+        });
+    }
+
+    private void updateSelectedProductsCount() {
+        // Update the TextView on the main thread
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // Retrieve or calculate selected products count
+                int selectedProductsCount = calculateSelectedProductsCount();
+                selectedProductsCountTextView.setText("Selected Products Count: " + selectedProductsCount);
+            }
+        });
+    }
+
+    private int calculateSelectedProductsCount() {
+        // Example: Retrieve selected products count for all criteria
+        int totalSelectedProductsCount = 0;
+        for (String criteria : criteriaList) {
+            List<Product> selectedProducts = SelectedProductsSingleton.getInstance().getSelectedProducts(criteria);
+            totalSelectedProductsCount += selectedProducts.size();
+        }
+        return totalSelectedProductsCount;
+    }
+
 
 }

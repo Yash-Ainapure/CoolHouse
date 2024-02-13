@@ -8,6 +8,7 @@ import java.util.Map;
 public class SelectedProductsSingleton {
     private static SelectedProductsSingleton instance;
     private Map<String, List<Product>> selectedProductsMap = new HashMap<>();
+    private List<SelectedProductsChangeListener> listeners = new ArrayList<>();
 
     private SelectedProductsSingleton() {
         // Private constructor to prevent instantiation
@@ -18,6 +19,24 @@ public class SelectedProductsSingleton {
             instance = new SelectedProductsSingleton();
         }
         return instance;
+    }
+
+    public interface SelectedProductsChangeListener {
+        void onSelectedProductsChanged();
+    }
+
+    public void addSelectedProductsChangeListener(SelectedProductsChangeListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeSelectedProductsChangeListener(SelectedProductsChangeListener listener) {
+        listeners.remove(listener);
+    }
+
+    private void notifyListeners() {
+        for (SelectedProductsChangeListener listener : listeners) {
+            listener.onSelectedProductsChanged();
+        }
     }
 
     public List<Product> getSelectedProducts(String criteria) {
@@ -31,10 +50,12 @@ public class SelectedProductsSingleton {
         List<Product> selectedProducts = getSelectedProducts(criteria);
         selectedProducts.add(product);
         selectedProductsMap.put(criteria, selectedProducts);
+        notifyListeners();
     }
 
     public void clearSelectedProducts(String criteria) {
         selectedProductsMap.remove(criteria);
+        notifyListeners();
     }
 
     public void loadSelectedProducts(String criteria, List<Product> productList) {
@@ -57,5 +78,11 @@ public class SelectedProductsSingleton {
             }
         }
         selectedProductsMap.put(criteria, selectedProducts);
+        notifyListeners();
+    }
+    private void notifySelectedProductsChanged() {
+        for (SelectedProductsChangeListener listener : listeners) {
+            listener.onSelectedProductsChanged();
+        }
     }
 }
