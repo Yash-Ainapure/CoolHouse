@@ -40,7 +40,13 @@ public class SelectedProductsSingleton {
     }
 
     public List<Product> getSelectedProducts(String criteria) {
-        if (selectedProductsMap.containsKey(criteria)) {
+        if (criteria == null || criteria.isEmpty()) {
+            List<Product> allSelectedProducts = new ArrayList<>();
+            for (List<Product> products : selectedProductsMap.values()) {
+                allSelectedProducts.addAll(products);
+            }
+            return allSelectedProducts;
+        } else if (selectedProductsMap.containsKey(criteria)) {
             return selectedProductsMap.get(criteria);
         }
         return new ArrayList<>();

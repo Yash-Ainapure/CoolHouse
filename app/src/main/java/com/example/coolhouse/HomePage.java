@@ -55,7 +55,8 @@ public class HomePage extends AppCompatActivity {
 
         setupSelectedProductsCountListener();
         getBill.setOnClickListener(v->{
-
+            Intent intent = new Intent(HomePage.this, GenerateBillActivity.class);
+            startActivity(intent);
         });
 
     }
