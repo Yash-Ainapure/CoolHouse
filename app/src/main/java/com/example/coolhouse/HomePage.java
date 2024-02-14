@@ -8,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,16 +51,36 @@ public class HomePage extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(criteriaAdapter);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+
+
         // Assuming "products" is your root node in the database
         productsRef = FirebaseDatabase.getInstance().getReference().child("products");
-
         fetchProductCriteria();
-
         setupSelectedProductsCountListener();
         getBill.setOnClickListener(v->{
             Intent intent = new Intent(HomePage.this, GenerateBillActivity.class);
             startActivity(intent);
         });
+
+
+        //bottom navigation sidebar
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.product_History) {
+                    startActivity(new Intent(HomePage.this, OrderHistory.class));
+                    return true;
+                } else if (item.getItemId() == R.id.profile) {
+                    // Handle item 2 selection
+                    return true;
+                }
+                // ... handle other items if needed
+                return false;
+            }
+        });
+
 
     }
 
