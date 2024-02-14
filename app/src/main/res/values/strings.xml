@@ -3,4 +3,8 @@
     <string name="TC">
         By proceeding, you agree to Voyagos Terms &amp; Conditions and Privacy Policy.
     </string>
+    <string name="select_criteria_prompt">Select Criteria</string>
+    <string name="product_name_hint">Enter Product Name</string>
+    <string name="product_price_hint">Enter Product Price</string>
+    <string name="add_product">Add Product</string>
 </resources>

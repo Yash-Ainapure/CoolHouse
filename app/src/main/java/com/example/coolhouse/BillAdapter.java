@@ -8,9 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -80,7 +86,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // User confirmed, delete the bill
+                        // User confirmed, delete the bill from both list and database
                         deleteBill(position);
                     }
                 })
@@ -95,6 +101,28 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
     }
 
     private void deleteBill(int position) {
+        DatabaseReference billsRef = FirebaseDatabase.getInstance().getReference().child("bills");
+        Bill billToDelete = billList.get(position);
+
+        // Remove the bill from the database
+        billsRef.child(billToDelete.getBillId()).removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Database deletion successful, now remove from the list
+                        removeBillFromList(position);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Database deletion failed, show an error message if needed
+                        Toast.makeText(context, "Failed to delete bill from database", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void removeBillFromList(int position) {
         // Remove the bill from the list
         billList.remove(position);
         // Notify the adapter that the data set has changed

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:context=".AddProduct">
+
+    <Spinner
+        android:id="@+id/criteriaSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:prompt="@string/select_criteria_prompt" />
+
+    <EditText
+        android:id="@+id/productNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_name_hint"
+        android:layout_below="@id/criteriaSpinner"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/productPriceEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/product_price_hint"
+        android:layout_below="@id/productNameEditText"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/addProductButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_product"
+        android:layout_below="@id/productPriceEditText"
+        android:onClick="onAddProductClick" />
+
+
+
+
+    <Spinner
+        android:id="@+id/criteriaSpinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addProductButton"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dropdown"/>
+
+    <Spinner
+        android:id="@+id/productSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/criteriaSpinner1"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:spinnerMode="dropdown"/>
+
+    <Button
+        android:id="@+id/deleteProductButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/productSpinner"
+        android:layout_centerHorizontal="true"
+        android:text="delete product" />
+
+
+</RelativeLayout>

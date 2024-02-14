@@ -72,8 +72,8 @@ public class HomePage extends AppCompatActivity {
                 if (item.getItemId() == R.id.product_History) {
                     startActivity(new Intent(HomePage.this, OrderHistory.class));
                     return true;
-                } else if (item.getItemId() == R.id.profile) {
-                    // Handle item 2 selection
+                } else if (item.getItemId() == R.id.addProduct) {
+                    startActivity(new Intent(HomePage.this, AddProduct.class));
                     return true;
                 }
                 // ... handle other items if needed
