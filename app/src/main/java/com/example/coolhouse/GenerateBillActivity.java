@@ -2,6 +2,7 @@ package com.example.coolhouse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +13,13 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateBillActivity extends AppCompatActivity {
 
     private TextView billTextView;
-    private EditText paymentDetailsEditText;
+//    private EditText paymentDetailsEditText;
     private Button saveBillButton;
 
     @Override
@@ -26,7 +28,7 @@ public class GenerateBillActivity extends AppCompatActivity {
         setContentView(R.layout.activity_generate_bill);
 
         billTextView = findViewById(R.id.billTextView);
-        paymentDetailsEditText = findViewById(R.id.paymentDetailsEditText);
+//        paymentDetailsEditText = findViewById(R.id.paymentDetailsEditText);
         saveBillButton = findViewById(R.id.saveBillButton);
 
         // Retrieve selected products
@@ -42,9 +44,26 @@ public class GenerateBillActivity extends AppCompatActivity {
         saveBillButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Save the bill with details
-                String paymentDetails = paymentDetailsEditText.getText().toString();
-                saveBill(selectedProducts, totalAmount, paymentDetails);
+
+                //String paymentDetails = paymentDetailsEditText.getText().toString();
+                if(totalAmount == 0){
+                    Toast.makeText(GenerateBillActivity.this, "No products selected", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+//                if(paymentDetails.isEmpty()){
+//                    paymentDetailsEditText.setError("Payment details required");
+//                    paymentDetailsEditText.requestFocus();
+//                    return;
+//                }
+                Intent intent=new Intent(GenerateBillActivity.this,DummyUPIPayment.class);
+                //intent.putExtra("paymentDetails",paymentDetails);
+                intent.putExtra("totalAmount",totalAmount);
+                ArrayList<Product> productArrayList = new ArrayList<>(selectedProducts);
+                intent.putParcelableArrayListExtra("selectedProducts",productArrayList);
+                startActivity(intent);
+
+//                String paymentDetails = paymentDetailsEditText.getText().toString();
+//                saveBill(selectedProducts, totalAmount, paymentDetails);
             }
         });
     }
@@ -61,9 +80,9 @@ public class GenerateBillActivity extends AppCompatActivity {
         // Build a string representation of the bill
         StringBuilder billText = new StringBuilder("Selected Products:\n");
         for (Product product : selectedProducts) {
-            billText.append(product.name).append(" - $").append(product.price).append("\n");
+            billText.append(product.name).append(" - ₹").append(product.price).append("\n");
         }
-        billText.append("\nTotal Amount: $").append(totalAmount);
+        billText.append("\nTotal Amount: ₹").append(totalAmount);
 
         // Display the bill in the TextView
         billTextView.setText(billText.toString());
@@ -77,11 +96,11 @@ public class GenerateBillActivity extends AppCompatActivity {
             Toast.makeText(GenerateBillActivity.this, "No products selected", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(paymentDetails.isEmpty()){
-            paymentDetailsEditText.setError("Payment details required");
-            paymentDetailsEditText.requestFocus();
-            return;
-        }
+//        if(paymentDetails.isEmpty()){
+//            paymentDetailsEditText.setError("Payment details required");
+//            paymentDetailsEditText.requestFocus();
+//            return;
+//        }
         // Create a unique ID for the bill
         String billId = generateUniqueBillId();
 

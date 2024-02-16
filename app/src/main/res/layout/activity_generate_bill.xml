@@ -16,23 +16,23 @@
                 android:id="@+id/billTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selected Products:\nProduct 1 - $10.00\nProduct 2 - $15.00\n\nTotal Amount: $25.00"
+                android:text="Selected Products:\nProduct 1 - ₹10.00\nProduct 2 - ₹15.00\n\nTotal Amount: ₹25.00"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/paymentDetailsEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Payment Details (Online/Cash)"
-                android:inputType="text" />
+<!--            <EditText-->
+<!--                android:id="@+id/paymentDetailsEditText"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:hint="Payment Details (Online/Cash)"-->
+<!--                android:inputType="text" />-->
 
             <Button
                 android:id="@+id/saveBillButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Save Bill" />
+                android:text="Pay Bill" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

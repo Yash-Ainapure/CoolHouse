@@ -56,11 +56,11 @@ public class Bill {
 
         details.append("Products:\n");
         for (Product product : products) {
-            details.append("- ").append(product.name).append(": $").append(product.price).append("\n");
+            details.append("- ").append(product.name).append(": ₹").append(product.price).append("\n");
         }
 
-        details.append("Total Amount: $").append(totalAmount).append("\n");
-        details.append("Payment Mode: ").append(paymentMode);
+        details.append("Total Amount: ₹").append(totalAmount).append("\n");
+        //details.append("Payment Mode: ").append(paymentMode);
 
         return details.toString();
     }

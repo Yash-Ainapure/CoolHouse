@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,6 +55,12 @@ public class HomePage extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
 
+        MenuItem menuItem1 = menu.findItem(R.id.addProduct);
+        if(FirebaseAuth.getInstance().getCurrentUser().getEmail().equals("admin@gmail.com")){
+            menuItem1.setVisible(true);
+        }else{
+            menuItem1.setVisible(false);
+        }
 
         // Assuming "products" is your root node in the database
         productsRef = FirebaseDatabase.getInstance().getReference().child("products");
