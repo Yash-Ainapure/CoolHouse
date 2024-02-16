@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="#FEF201"
+    android:layout_height="match_parent">
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/search_bg"
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/sign_bg"
         android:elevation="20dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:context=".MainActivity"
         tools:ignore="MissingConstraints">
 
+        <TextView
 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textColor="@color/btn_bg"
+            android:textSize="30dp"
+            android:textStyle="bold" />
         <EditText
             android:id="@+id/Email"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="15dp"
-
+android:background="@drawable/custom_edit_text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/btn_bg"
             android:hint="Email"
-            android:padding="10dp"
+            android:textColorHint="@color/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -41,12 +53,17 @@
 
         <EditText
             android:id="@+id/Password"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="Password"
+            android:textColor="@color/btn_bg"
+            android:textColorHint="@color/border"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
             android:inputType="textPassword"
-            android:padding="10dp"
+            android:background="@drawable/custom_edit_text"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
@@ -57,13 +74,18 @@
 
         <Button
             android:id="@+id/Login"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="16dp"
             android:text="Login"
+            android:textSize="16dp"
+            android:textStyle="bold"
+
+            android:textColor="@color/app_bg"
+            android:background="@drawable/custom_button_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.54"
@@ -82,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Didn't have an account?"
-                android:textColor="#101010"
+                android:textColor="@color/border"
                 android:textSize="15dp" />
 
             <TextView
@@ -90,11 +112,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  Signup here"
-                android:textColor="@color/calbtn"
+                android:textColor="@color/btn_bg"
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="242dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/coolhouselogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

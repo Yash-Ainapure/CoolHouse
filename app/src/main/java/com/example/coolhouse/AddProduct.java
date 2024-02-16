@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Criteria;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +20,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,7 +62,35 @@ public class AddProduct extends AppCompatActivity {
 
         productsRef = FirebaseDatabase.getInstance().getReference().child("products");
         criteriaRef = FirebaseDatabase.getInstance().getReference().child("products");
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        bottomNavigationView.setSelectedItemId(R.id.addProduct);
+        MenuItem menuItem1 = menu.findItem(R.id.addProduct);
+        if(FirebaseAuth.getInstance().getCurrentUser().getEmail().equals("admin@gmail.com")){
+            menuItem1.setVisible(true);
+        }else{
+            menuItem1.setVisible(false);
+        }
 
+        // Fetch bills from Firebase
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.home) {
+                    finish();
+                    startActivity(new Intent(AddProduct.this, HomePage.class));
+                    return true;
+                } else if (item.getItemId() == R.id.product_History) {
+                    finish();
+                    startActivity(new Intent(AddProduct.this, OrderHistory.class));
+                    return true;
+                }
+                // ... handle other items if needed
+                return false;
+            }
+        });
         List<String> criteriaList = new ArrayList<>();
         List<String> criteriaList2 = new ArrayList<>();
         productsRef.addValueEventListener(new ValueEventListener() {

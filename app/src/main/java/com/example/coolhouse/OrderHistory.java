@@ -41,7 +41,7 @@ public class OrderHistory extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
-
+        bottomNavigationView.setSelectedItemId(R.id.product_History);
         MenuItem menuItem1 = menu.findItem(R.id.addProduct);
         if(FirebaseAuth.getInstance().getCurrentUser().getEmail().equals("admin@gmail.com")){
             menuItem1.setVisible(true);
