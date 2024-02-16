@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +39,35 @@ public class OrderHistory extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(billAdapter);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+
+        MenuItem menuItem1 = menu.findItem(R.id.addProduct);
+        if(FirebaseAuth.getInstance().getCurrentUser().getEmail().equals("admin@gmail.com")){
+            menuItem1.setVisible(true);
+        }else{
+            menuItem1.setVisible(false);
+        }
+
         // Fetch bills from Firebase
         fetchBillsFromFirebase();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.home) {
+                    finish();
+                    startActivity(new Intent(OrderHistory.this, HomePage.class));
+                    return true;
+                } else if (item.getItemId() == R.id.addProduct) {
+                    finish();
+                    startActivity(new Intent(OrderHistory.this, AddProduct.class));
+                    return true;
+                }
+                // ... handle other items if needed
+                return false;
+            }
+        });
     }
 
     private void fetchBillsFromFirebase() {

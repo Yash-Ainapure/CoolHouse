@@ -77,9 +77,11 @@ public class HomePage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.product_History) {
+                    finish();
                     startActivity(new Intent(HomePage.this, OrderHistory.class));
                     return true;
                 } else if (item.getItemId() == R.id.addProduct) {
+                    finish();
                     startActivity(new Intent(HomePage.this, AddProduct.class));
                     return true;
                 }
