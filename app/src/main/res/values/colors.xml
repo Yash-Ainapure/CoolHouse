@@ -18,4 +18,7 @@
     <color name="app_bg">#140F1F</color>
     <color name="btn_bg">#FEDB71</color>
     <color name="border">#EEEEEE</color>
+    <color name="text">#FFFFFF</color>
+    <color name="sub_text">#B3B3B3</color>
+    <color name="btn_bg2">#FEF771</color>
 </resources>

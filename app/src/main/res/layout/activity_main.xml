@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FEF201"
+    android:background="@color/btn_bg2"
     android:layout_height="match_parent">
 
 
@@ -13,36 +13,36 @@
         android:layout_height="0dp"
         android:background="@drawable/sign_bg"
         android:elevation="20dp"
-        android:gravity="center"
+        android:gravity="center|fill_vertical"
         android:orientation="vertical"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:context=".MainActivity"
         tools:ignore="MissingConstraints">
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="50dp"
             android:text="Sign In"
             android:textColor="@color/btn_bg"
             android:textSize="30dp"
             android:textStyle="bold" />
+
         <EditText
             android:id="@+id/Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="15dp"
-android:background="@drawable/custom_edit_text"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/custom_edit_text"
+            android:hint="Email"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
             android:textColor="@color/btn_bg"
-            android:hint="Email"
             android:textColorHint="@color/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,14 +55,14 @@ android:background="@drawable/custom_edit_text"
             android:id="@+id/Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/custom_edit_text"
             android:hint="Password"
-            android:textColor="@color/btn_bg"
-            android:textColorHint="@color/border"
+            android:inputType="textPassword"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:inputType="textPassword"
-            android:background="@drawable/custom_edit_text"
+            android:textColor="@color/btn_bg"
+            android:textColorHint="@color/border"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,16 +76,15 @@ android:background="@drawable/custom_edit_text"
             android:id="@+id/Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/custom_button_bg"
             android:gravity="center"
             android:padding="16dp"
             android:text="Login"
+            android:textColor="@color/app_bg"
+
             android:textSize="16dp"
             android:textStyle="bold"
-
-            android:textColor="@color/app_bg"
-            android:background="@drawable/custom_button_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.54"
@@ -96,7 +95,7 @@ android:background="@drawable/custom_edit_text"
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
+            android:layout_marginVertical="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -129,6 +128,6 @@ android:background="@drawable/custom_edit_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/coolhouselogo" />
+        app:srcCompat="@drawable/coolhouselogo_removebg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
