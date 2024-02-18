@@ -1,10 +1,5 @@
 package com.example.coolhouse;
 
-
-
-
-
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 

@@ -9,62 +9,66 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
+        android:background="@drawable/icecream22"
         tools:context=".Home_page">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_margin="9dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/editTextText4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/search_bg"
-                android:drawableLeft="@drawable/baseline_search_24"
-                android:drawablePadding="8dp"
-                android:elevation="10dp"
-                android:ems="10"
-                android:gravity="center_vertical"
-                android:hint="Try Searching Some Products"
-                android:inputType="text" />
-        </LinearLayout>
+        <EditText
+            android:id="@+id/searchtext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/search_bg"
+            android:drawableLeft="@drawable/baseline_search_24"
+            android:drawablePadding="8dp"
+            android:elevation="10dp"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:hint="Try Searching 'Mumbai Flights'"
+            android:inputType="text"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="370dp"
+            android:layout_height="550dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/hotel_card_bg"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
             android:elevation="20dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/searchtext"
             app:shapeAppearanceOverlay="@style/circular">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/menucard"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#FDA172"
-                android:gravity="center"
-                android:text="-----* Menu Card *-----"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/menucard"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#FDA172"
+                    android:gravity="center"
+                    android:text=" Menu Card"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <ScrollView
@@ -98,22 +102,26 @@
                     </RelativeLayout>
 
                     <View
-                        android:background="@color/black"
                         android:layout_width="match_parent"
-                        android:layout_height="5dp"/>
+                        android:layout_height="5dp"
+                        android:background="@color/black" />
+
                     <TextView
                         android:id="@+id/selectedProductsCountTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Selected Products Count: 0"
-                        android:textSize="18sp"
                         android:textColor="@android:color/black"
-                        android:layout_marginTop="16dp"/>
+                        android:textSize="15dp" />
+
                     <Button
                         android:id="@+id/getbill"
-                        android:text="generate bill"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="generate bill" />
 
                 </LinearLayout>
             </ScrollView>
@@ -123,7 +131,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

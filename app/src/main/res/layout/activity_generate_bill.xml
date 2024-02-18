@@ -1,31 +1,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/icecream22">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:background="@drawable/add_product"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:elevation="10dp">
 
             <TextView
                 android:id="@+id/billTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
+                android:padding="10dp"
                 android:text="Selected Products:\nProduct 1 - ₹10.00\nProduct 2 - ₹15.00\n\nTotal Amount: ₹25.00"
                 android:textSize="16sp" />
 
-<!--            <EditText-->
-<!--                android:id="@+id/paymentDetailsEditText"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:hint="Payment Details (Online/Cash)"-->
-<!--                android:inputType="text" />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/paymentDetailsEditText"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:hint="Payment Details (Online/Cash)"-->
+            <!--                android:inputType="text" />-->
 
             <Button
                 android:id="@+id/saveBillButton"
