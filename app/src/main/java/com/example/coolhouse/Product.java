@@ -10,6 +10,7 @@ public class Product implements Parcelable {
     public String name;
     public double price;
     public boolean isSelected;
+    public String imgUrl;
 
     public Product(){
     }
@@ -17,6 +18,46 @@ public class Product implements Parcelable {
         name = in.readString();
         price = in.readDouble();
         isSelected = in.readByte() != 0;
+        imgUrl = in.readString();
+    }
+
+    public Product(String name, double price, boolean isSelected,String imgUrl) {
+        this.name = name;
+        this.price = price;
+        this.isSelected = isSelected;
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -42,5 +83,6 @@ public class Product implements Parcelable {
         parcel.writeString(name);
         parcel.writeDouble(price);
         parcel.writeByte((byte) (isSelected ? 1 : 0));
+        parcel.writeString(imgUrl);
     }
 }

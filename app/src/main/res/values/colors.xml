@@ -21,4 +21,9 @@
     <color name="text">#FFFFFF</color>
     <color name="sub_text">#B3B3B3</color>
     <color name="btn_bg2">#FEF771</color>
+
+    <!--  menu colors-->
+    <color name="selected_color">#FFFFFF</color>
+    <color name="unselected_color">#000000</color>
+
 </resources>

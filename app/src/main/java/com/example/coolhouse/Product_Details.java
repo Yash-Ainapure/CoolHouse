@@ -86,27 +86,6 @@ public class Product_Details extends AppCompatActivity {
 
     }
 
-//    private void generateBill() {
-//        List<Product> selectedProducts = SelectedProductsSingleton.getInstance().getSelectedProducts();
-//
-//        // Calculate the total amount based on selected products
-//        double totalAmount = 0.0;
-//        for (Product product : selectedProducts) {
-//            totalAmount += product.price;
-//        }
-//
-//    }
-
-
-//    private void clearSelection() {
-//        for (Product product : productList) {
-//            product.isSelected = false;
-//        }
-//        SelectedProductsSingleton.getInstance().clearSelectedProducts();
-//        productAdapter.notifyDataSetChanged();
-//    }
-
-
 }
 
 

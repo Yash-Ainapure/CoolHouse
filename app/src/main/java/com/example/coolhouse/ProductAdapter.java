@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,8 +47,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         // Set item views based on your views and data model
         holder.nameTextView.setText(product.name);
-        holder.priceTextView.setText(String.valueOf(product.price));
+        holder.priceTextView.setText("₹"+String.valueOf(product.price));
         holder.selectionCheckBox.setChecked(product.isSelected);
+        Picasso.get().load(product.getImgUrl()).into(holder.productImageView);
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +84,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public TextView nameTextView;
         public TextView priceTextView;
         public CheckBox selectionCheckBox;
+        public ImageView productImageView;
 
 
         public ProductViewHolder(View itemView) {
@@ -88,6 +94,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             nameTextView = itemView.findViewById(R.id.nameTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
             selectionCheckBox = itemView.findViewById(R.id.selectionCheckBox);
+            productImageView = itemView.findViewById(R.id.productImageView);
 
         }
     }

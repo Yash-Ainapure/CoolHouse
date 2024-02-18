@@ -85,7 +85,6 @@ public class HomePage extends AppCompatActivity {
                     startActivity(new Intent(HomePage.this, AddProduct.class));
                     return true;
                 }
-                // ... handle other items if needed
                 return false;
             }
         });
