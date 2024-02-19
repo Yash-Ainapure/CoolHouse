@@ -21,6 +21,8 @@ public class GenerateBillActivity extends AppCompatActivity {
     private TextView billTextView;
 //    private EditText paymentDetailsEditText;
     private Button saveBillButton;
+    private Button payByCashButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class GenerateBillActivity extends AppCompatActivity {
         billTextView = findViewById(R.id.billTextView);
 //        paymentDetailsEditText = findViewById(R.id.paymentDetailsEditText);
         saveBillButton = findViewById(R.id.saveBillButton);
+        payByCashButton = findViewById(R.id.payByCash);
 
         // Retrieve selected products
         List<Product> selectedProducts = SelectedProductsSingleton.getInstance().getSelectedProducts(null);
@@ -64,6 +67,14 @@ public class GenerateBillActivity extends AppCompatActivity {
 
 //                String paymentDetails = paymentDetailsEditText.getText().toString();
 //                saveBill(selectedProducts, totalAmount, paymentDetails);
+            }
+        });
+
+        payByCashButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String paymentDetails = "Cash";
+                saveBill(selectedProducts, totalAmount, paymentDetails);
             }
         });
     }

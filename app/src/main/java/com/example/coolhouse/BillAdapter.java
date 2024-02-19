@@ -42,21 +42,14 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
     public void onBindViewHolder(@NonNull BillViewHolder holder, int position) {
         Bill bill = billList.get(position);
 
-        // Update TextViews or UI components with bill details
+        if(bill.getPaymentMode()!=null && bill.getPaymentMode().equals("Cash")){
+            holder.paymentMode.setText("Payment Mode: Cash");
+        }
         holder.billDetailsTextView.setText("Bill Details: " + bill.getDetails());
-
-        // Set click listener for delete button
         holder.deleteBillButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showConfirmationDialog(holder.getAdapterPosition());
-//                int adapterPosition = holder.getAdapterPosition();
-//                if (adapterPosition != RecyclerView.NO_POSITION) {
-//                    billList.remove(adapterPosition);
-//                    // Notify the adapter that the data set has changed
-//                    notifyItemRemoved(adapterPosition);
-//                }
             }
         });
     }
@@ -68,7 +61,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
 
     // ViewHolder class
     public static class BillViewHolder extends RecyclerView.ViewHolder {
-        public TextView billDetailsTextView;
+        public TextView billDetailsTextView,paymentMode;
         public Button deleteBillButton;
 
         public BillViewHolder(View itemView) {
@@ -77,6 +70,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
             // Your view should match the layout item_bill.xml
             billDetailsTextView = itemView.findViewById(R.id.billDetailsTextView);
             deleteBillButton = itemView.findViewById(R.id.deleteBillButton);
+            paymentMode = itemView.findViewById(R.id.paymentMode);
         }
     }
     private void showConfirmationDialog(int position) {

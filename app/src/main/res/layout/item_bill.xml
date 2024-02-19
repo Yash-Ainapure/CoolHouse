@@ -11,6 +11,13 @@
         android:text="Bill Details"
         android:textSize="14sp"
         android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/paymentMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Mode : Online"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
     <Button
         android:id="@+id/deleteBillButton"
         android:layout_width="wrap_content"
