@@ -132,6 +132,7 @@ public class DummyUPIPayment extends AppCompatActivity {
         billsRef.child(billId).setValue(bill)
                 .addOnSuccessListener(aVoid -> {
                     // Handle successful save
+                    finish();
                     Intent intent1 = new Intent(DummyUPIPayment.this, HomePage.class);
                     startActivity(intent1);
                     Toast.makeText(DummyUPIPayment.this, "Bill saved successfully", Toast.LENGTH_SHORT).show();

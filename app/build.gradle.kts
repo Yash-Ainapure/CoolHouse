@@ -45,5 +45,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
     implementation ("com.squareup.picasso:picasso:2.71828");
-
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 }

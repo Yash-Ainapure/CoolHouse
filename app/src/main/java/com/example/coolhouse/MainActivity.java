@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +29,20 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
+
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+
+//        if (currentUser != null) {
+//
+//             startActivity(new Intent(this, HomePage.class));
+//             finish();
+//        } else {
+//            // No user is signed in
+//        }
+
+
 
         Textemail = findViewById(R.id.Email);
         Textpassword = findViewById(R.id.Password);

@@ -35,6 +35,7 @@ public class HomePage extends AppCompatActivity {
     private DatabaseReference productsRef;
     Button getBill;
     private TextView selectedProductsCountTextView;
+    private Button clearButton;
 
 
     @Override
@@ -61,6 +62,13 @@ public class HomePage extends AppCompatActivity {
         }else{
             menuItem1.setVisible(false);
         }
+
+
+
+        clearButton = findViewById(R.id.clearSelection);
+        clearButton.setOnClickListener(v->{
+            SelectedProductsSingleton.getInstance().clearAllSelectedProducts();
+        });
 
         // Assuming "products" is your root node in the database
         productsRef = FirebaseDatabase.getInstance().getReference().child("products");

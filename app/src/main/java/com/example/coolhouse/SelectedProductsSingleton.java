@@ -64,6 +64,11 @@ public class SelectedProductsSingleton {
         notifyListeners();
     }
 
+    public void clearAllSelectedProducts() {
+        selectedProductsMap.clear();
+        notifyListeners();
+    }
+
     public void loadSelectedProducts(String criteria, List<Product> productList) {
         List<Product> selectedProducts = getSelectedProducts(criteria);
         for (Product product : productList) {

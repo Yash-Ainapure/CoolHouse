@@ -7,7 +7,7 @@
     android:background="@drawable/icecream22">
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -24,7 +24,7 @@
             android:paddingEnd="20dp"
             android:paddingBottom="15dp" />
 
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_margin="15dp"

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
@@ -79,6 +80,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
+    public void updateList(List<Product> newList) {
+        productList = new ArrayList<>();
+        productList.addAll(newList);
+        notifyDataSetChanged();
+    }
     // View holder class
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
