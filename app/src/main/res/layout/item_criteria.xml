@@ -2,19 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/criteriaImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="10dp"
 
+        app:shapeAppearanceOverlay="@style/circular"
+        android:src="@drawable/placeholderpht"
+        android:scaleType="centerCrop" />
     <TextView
         android:id="@+id/criteriaTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Criteria"
+        android:layout_weight="1"
+        android:textColor="@color/border"
+        android:layout_gravity="center_vertical"
         android:textSize="18sp" />
     <TextView
         android:id="@+id/selectedProductsCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
+        android:layout_gravity="center_vertical"
+        android:text="Selected Products: 0"
+        android:textColor="@color/btn_bg"
         android:layout_marginStart="8dp"/>
-
+</LinearLayout>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginVertical="10dp"-->
+<!--        android:layout_marginHorizontal="5dp"-->
+<!--        android:background="@color/border" />-->
 </LinearLayout>

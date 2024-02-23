@@ -21,6 +21,8 @@
     <color name="text">#FFFFFF</color>
     <color name="sub_text">#B3B3B3</color>
     <color name="btn_bg2">#FEF771</color>
+    <color name="ripple_color">#FEDB71</color>
+    <color name="green">#59DD90</color>
 
     <!--  menu colors-->
     <color name="selected_color">#FFFFFF</color>

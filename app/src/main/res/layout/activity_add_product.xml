@@ -1,145 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="16dp"
-    android:paddingBottom="6dp"
-    android:paddingStart="6dp"
-    android:paddingEnd="6dp"
+    android:paddingTop="30dp"
+    android:orientation="vertical"
     tools:context=".AddProduct"
-    android:background="@drawable/icecream22">
+    android:background="@color/btn_bg">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:padding="10dp"
+android:layout_gravity="center_vertical"
+        android:background="@drawable/add_product"
         android:elevation="10dp"
-        android:background="@drawable/add_product">
+        android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/criteriaSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:prompt="@string/select_criteria_prompt"
-        android:elevation="10dp"
-        android:background="@drawable/add_product"/>
+        <TextView
 
-    <EditText
-        android:id="@+id/productNameEditText"
-        android:layout_width="match_parent"
-        android:hint="@string/product_name_hint"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:elevation="10dp"
-        android:layout_below="@id/criteriaSpinner"
-        android:background="@drawable/add_product"/>
+            android:text="Add Products"
+            style="@style/CustomTitle"/>
+        <Spinner
+            android:id="@+id/criteriaSpinner"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/select_criteria_prompt"
+            android:spinnerMode="dropdown"
+            android:contextClickable="true"
 
-    <EditText
-        android:id="@+id/productPriceEditText"
-        android:layout_width="match_parent"
-        android:hint="@string/product_price_hint"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:elevation="10dp"
-        android:layout_below="@id/productNameEditText"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/add_product"/>
+            />
+
+        <EditText
+            android:id="@+id/productNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/criteriaSpinner"
+            style="@style/CustomEditText"
+
+
+            android:hint="@string/product_name_hint" />
+
+        <EditText
+            android:id="@+id/productPriceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/productNameEditText"
+            style="@style/CustomEditText"
+            android:layout_marginBottom="16dp"
+
+            android:hint="@string/product_price_hint" />
 
 
         <Button
             android:id="@+id/addProductButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/productPriceEditText"
             android:layout_alignParentEnd="true"
             android:layout_gravity="bottom|center"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="20dp"
-            android:elevation="10dp"
             android:onClick="onAddProductClick"
+            style="@style/CustomButton"
             android:text="@string/add_product"
             android:textSize="15dp" />
     </LinearLayout>
 
-<LinearLayout
-    android:id="@+id/linearLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="40dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:elevation="10dp"
-    android:background="@drawable/add_product"
-    android:layout_below="@id/linearLayout1">
-    <Spinner
-        android:id="@+id/criteriaSpinner1"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_below="@id/addProductButton"
-        android:layout_marginTop="30dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:elevation="10dp"
-        android:layout_centerHorizontal="true"
-        android:spinnerMode="dropdown"
-        android:background="@drawable/add_product"
-        />
-
-    <Spinner
-        android:id="@+id/productSpinner"
-        android:layout_width="match_parent"
-        android:layout_below="@id/criteriaSpinner1"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:spinnerMode="dropdown"
-        android:elevation="10dp"
-        android:background="@drawable/add_product"/>
-
-    <Button
-        android:id="@+id/deleteProductButton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:layout_below="@id/linearLayout1"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/add_product"
         android:elevation="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="bottom|center"
-        android:layout_below="@id/productSpinner"
-        android:layout_centerHorizontal="true"
-        android:text="delete product" />
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+
+            style="@style/CustomTitle"
+            android:text="Delete Products" />
+
+        <Spinner
+            android:id="@+id/criteriaSpinner1"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/addProductButton"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:spinnerMode="dropdown"
+
+            />
+
+        <Spinner
+            android:id="@+id/productSpinner"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/criteriaSpinner1"
+            android:layout_centerHorizontal="true"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/deleteProductButton"
+            style="@style/CustomButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productSpinner"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom|center"
+            android:elevation="10dp"
+            android:text="Delete"
+            android:textSize="15dp" />
 
 
+    </LinearLayout>
 
-</LinearLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:gravity="bottom"
+    >
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="350dp"
-        android:layout_height="65dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:background="@drawable/nav_bar"
+        app:itemIconTint="@drawable/bottom_nav_color_state"
+        app:itemTextColor="@drawable/bottom_nav_color_state"
+        app:itemRippleColor="@color/ripple_color"
         app:menu="@menu/menu" />
-</RelativeLayout>
+
+</LinearLayout>
+</LinearLayout>

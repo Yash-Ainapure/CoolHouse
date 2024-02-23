@@ -68,11 +68,14 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
         public TextView selectedProductsCountTextView;
 
 
+
+
         public CriteriaViewHolder(View itemView) {
             super(itemView);
 
             // Your view should match the layout item_criteria.xml
             criteriaTextView = itemView.findViewById(R.id.criteriaTextView);
+
             selectedProductsCountTextView = itemView.findViewById(R.id.selectedProductsCountTextView);
 
         }

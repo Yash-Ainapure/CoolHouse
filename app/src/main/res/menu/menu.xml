@@ -15,4 +15,9 @@
         android:title="Add Product"
         android:icon="@drawable/baseline_add_shopping_card_24" />
 
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/logout" />
+
 </menu>

@@ -52,14 +52,14 @@ public class Bill {
     public String getDetails() {
         StringBuilder details = new StringBuilder();
 
-        details.append("Bill ID: ").append(billId).append("\n");
+        details.append("Bill ID: ").append(billId).append("\n\n");
 
         details.append("Products:\n");
         for (Product product : products) {
-            details.append("- ").append(product.name).append(": ₹").append(product.price).append("\n");
+            details.append("-- ").append(product.name).append(": ₹").append(product.price).append("\n");
         }
 
-        details.append("Total Amount: ₹").append(totalAmount).append("\n");
+        details.append("\nTotal Amount: ₹").append(totalAmount).append("\n");
         //details.append("Payment Mode: ").append(paymentMode);
 
         return details.toString();

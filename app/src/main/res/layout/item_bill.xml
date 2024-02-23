@@ -3,25 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingHorizontal="16dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill Details "
+     style="@style/CustomTitle"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
     <TextView
         android:id="@+id/billDetailsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bill Details"
-        android:textSize="14sp"
+        android:textColor="@color/border"
+        android:textSize="16dp"
+        android:layout_marginHorizontal="20dp"
         android:textStyle="bold"/>
     <TextView
         android:id="@+id/paymentMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Payment Mode : Online"
-        android:textSize="14sp"
+        android:layout_marginVertical="2dp"
+        android:layout_marginHorizontal="20dp"
+
+        android:textColor="@color/border"
+        android:textSize="16dp"
         android:textStyle="bold"/>
     <Button
         android:id="@+id/deleteBillButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        style="@style/CustomButton"
         android:text="Delete reciept"
         android:textSize="13sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="@color/border" />
 </LinearLayout>

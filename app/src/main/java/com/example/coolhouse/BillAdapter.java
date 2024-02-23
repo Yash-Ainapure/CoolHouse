@@ -45,7 +45,7 @@ public class BillAdapter extends RecyclerView.Adapter<BillAdapter.BillViewHolder
         if(bill.getPaymentMode()!=null && bill.getPaymentMode().equals("Cash")){
             holder.paymentMode.setText("Payment Mode: Cash");
         }
-        holder.billDetailsTextView.setText("Bill Details: " + bill.getDetails());
+        holder.billDetailsTextView.setText(bill.getDetails());
         holder.deleteBillButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

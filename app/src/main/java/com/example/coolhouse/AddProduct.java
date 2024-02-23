@@ -86,6 +86,9 @@ public class AddProduct extends AppCompatActivity {
                     finish();
                     startActivity(new Intent(AddProduct.this, OrderHistory.class));
                     return true;
+                } else if (item.getItemId() == R.id.logout) {
+                    showLogoutConfirmationDialog();
+                    return true;
                 }
                 // ... handle other items if needed
                 return false;
@@ -104,8 +107,8 @@ public class AddProduct extends AppCompatActivity {
                 }
                 criteriaList.add("Create New Category");
 
-                ArrayAdapter<String> criteriaAdapter = new ArrayAdapter<>(AddProduct.this, android.R.layout.simple_spinner_item, criteriaList);
-                criteriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter<String> criteriaAdapter = new ArrayAdapter<>(AddProduct.this, R.layout.spinner_item, criteriaList);
+                criteriaAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
                 criteriaSpinner.setAdapter(criteriaAdapter);
 
                 criteriaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -172,13 +175,14 @@ public class AddProduct extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 criteriaList2.clear();
 
+
                 for (DataSnapshot criteriaSnapshot : dataSnapshot.getChildren()) {
                     String criteria = criteriaSnapshot.getKey();
                     criteriaList2.add(criteria);
                 }
 
-                ArrayAdapter<String> criteriaAdapter = new ArrayAdapter<>(AddProduct.this, android.R.layout.simple_spinner_item, criteriaList2);
-                criteriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter<String> criteriaAdapter = new ArrayAdapter<>(AddProduct.this, R.layout.spinner_item, criteriaList2);
+                criteriaAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
                 criteriaSpinner1.setAdapter(criteriaAdapter);
 
                 criteriaSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -195,8 +199,8 @@ public class AddProduct extends AppCompatActivity {
                                     String product = productSnapshot.getKey();
                                     productList.add(product);
                                 }
-                                ArrayAdapter<String> productAdapter = new ArrayAdapter<>(AddProduct.this, android.R.layout.simple_spinner_item, productList);
-                                productAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                ArrayAdapter<String> productAdapter = new ArrayAdapter<>(AddProduct.this,R.layout.spinner_item, productList);
+                                productAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
                                 productSpinner.setAdapter(productAdapter);
                             }
                             @Override
@@ -228,7 +232,32 @@ public class AddProduct extends AppCompatActivity {
 
 
     }
+    private void showLogoutConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout Confirmation");
+        builder.setMessage("Are you sure you want to logout?");
 
+        // Add buttons for positive (yes) and negative (no) actions
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // User clicked "Yes", perform logout
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(AddProduct.this, MainActivity.class));
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // User clicked "No", do nothing or handle accordingly
+            }
+        });
+
+        // Create and show the dialog
+        builder.create().show();
+    }
     public void onAddProductClick(View view) {
         String criteria = criteriaSpinner.getSelectedItem().toString();
         String productName = productNameEditText.getText().toString().trim();

@@ -2,27 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="16dp">
 
-    <ImageView
+    <CheckBox
+        android:id="@+id/selectionCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:buttonTint="@color/green"
+        android:clickable="false"
+
+        android:focusable="false"
+        android:textColor="@color/border" />
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/productImageView"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/button_bg"
-        android:scaleType="centerCrop" />
+        app:shapeAppearanceOverlay="@style/circular"
+        android:src="@drawable/placeholderpht"
+        android:scaleType="centerCrop"
+        android:layout_marginHorizontal="16dp"
+        />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_marginStart="16dp">
+        >
 
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/btn_bg"
+            android:textStyle="bold"
+            android:text="CAD-B"
             android:textSize="18sp" />
 
         <TextView
@@ -30,17 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:text="80"
+            android:textColor="@color/border"
+            android:textStyle="bold"
             android:layout_marginTop="8dp" />
 
     </LinearLayout>
-
-    <CheckBox
-        android:id="@+id/selectionCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="Select"
-        android:focusable="false"
-        android:clickable="false" />
 
 </LinearLayout>

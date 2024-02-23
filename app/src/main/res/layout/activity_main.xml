@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/btn_bg2"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/btn_bg2">
 
 
     <LinearLayout
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="50dp"
+            android:layout_marginVertical="40dp"
             android:text="Sign In"
             android:textColor="@color/btn_bg"
             android:textSize="30dp"

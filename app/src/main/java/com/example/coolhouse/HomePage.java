@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,11 +95,41 @@ public class HomePage extends AppCompatActivity {
                     startActivity(new Intent(HomePage.this, AddProduct.class));
                     return true;
                 }
+                else if (item.getItemId() == R.id.logout) {
+                    showLogoutConfirmationDialog();
+                    return true;
+                }
                 return false;
             }
         });
 
 
+    }
+    private void showLogoutConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout Confirmation");
+        builder.setMessage("Are you sure you want to logout?");
+
+        // Add buttons for positive (yes) and negative (no) actions
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // User clicked "Yes", perform logout
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(HomePage.this, MainActivity.class));
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // User clicked "No", do nothing or handle accordingly
+            }
+        });
+
+        // Create and show the dialog
+        builder.create().show();
     }
 
     private void fetchProductCriteria() {

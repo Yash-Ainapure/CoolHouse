@@ -16,4 +16,36 @@
         <item name="android:background">@drawable/custom_dial_button</item>
     </style>
 
+    <style name="CustomEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/custom_edit_text</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textColor">@color/btn_bg</item>
+        <item name="android:textColorHint">@color/border</item>
+        <item name="android:layout_marginVertical">5dp</item>
+    </style>
+
+    <style name="CustomButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/custom_button_bg</item>
+        <item name="android:textColor">@color/app_bg</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:layout_marginVertical">8dp</item>
+    </style>
+    <style name="CustomTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textColor">@color/btn_bg</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
