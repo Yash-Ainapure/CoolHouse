@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OrderHistory"
 
-    android:background="@color/btn_bg">
+    android:background="@color/btn_bg2">
 
     <LinearLayout
         android:layout_margin="15dp"

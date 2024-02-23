@@ -7,7 +7,7 @@
     android:paddingTop="30dp"
     android:orientation="vertical"
     tools:context=".AddProduct"
-    android:background="@color/btn_bg">
+    android:background="@color/btn_bg2">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
