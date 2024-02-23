@@ -34,7 +34,9 @@ public class HomePage extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CriteriaAdapter criteriaAdapter;
     private List<String> criteriaList;
+    private List<String> imageList;
     private DatabaseReference productsRef;
+    private DatabaseReference imageRef;
     Button getBill;
     private TextView selectedProductsCountTextView;
     private Button clearButton;
@@ -49,7 +51,8 @@ public class HomePage extends AppCompatActivity {
         selectedProductsCountTextView = findViewById(R.id.selectedProductsCountTextView);
         recyclerView = findViewById(R.id.recyclerView);
         criteriaList = new ArrayList<>();
-        criteriaAdapter = new CriteriaAdapter(this, criteriaList);
+        imageList = new ArrayList<>();
+        criteriaAdapter = new CriteriaAdapter(this, criteriaList,imageList);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -73,6 +76,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         // Assuming "products" is your root node in the database
+        imageRef = FirebaseDatabase.getInstance().getReference().child("productImg");
         productsRef = FirebaseDatabase.getInstance().getReference().child("products");
         fetchProductCriteria();
         setupSelectedProductsCountListener();
@@ -142,7 +146,22 @@ public class HomePage extends AppCompatActivity {
                 }
                 criteriaAdapter.notifyDataSetChanged();
             }
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
+        imageRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                imageList.clear();
+                for (DataSnapshot imageSnapshot : dataSnapshot.getChildren()) {
+                    String imageUrl = imageSnapshot.getValue(String.class);
+                    Log.d("image key","img key is : "+imageUrl);
+                    imageList.add(imageUrl);
+                }
+                criteriaAdapter.notifyDataSetChanged();
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle error
