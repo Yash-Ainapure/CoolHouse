@@ -34,13 +34,12 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
 
-//        if (currentUser != null) {
-//
-//             startActivity(new Intent(this, HomePage.class));
-//             finish();
-//        } else {
-//            // No user is signed in
-//        }
+        if (currentUser != null) {
+             startActivity(new Intent(this, HomePage.class));
+             finish();
+        } else {
+            // No user is signed in
+        }
 
 
 

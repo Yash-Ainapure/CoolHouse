@@ -128,6 +128,8 @@ public class GenerateBillActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     // Handle successful save
                     Toast.makeText(GenerateBillActivity.this, "Bill saved successfully", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(new Intent(GenerateBillActivity.this,HomePage.class));
                 })
                 .addOnFailureListener(e -> {
                     // Handle failure
